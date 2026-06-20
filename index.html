@@ -9,7 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --charcoal: #1C2B3A;
       --gold: #C9922A;
@@ -20,634 +19,172 @@
       --text: #2C2C2C;
       --muted: #7A7570;
     }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      color: var(--text);
-      line-height: 1.65;
-      background: var(--white);
-    }
-
-    h1, h2, h3, h4, .wordmark {
-      font-family: 'Libre Baskerville', Georgia, serif;
-    }
-
+    body { font-family: 'Lato', sans-serif; color: var(--text); line-height: 1.65; background: var(--white); }
+    h1, h2, h3, h4, .wordmark { font-family: 'Libre Baskerville', Georgia, serif; }
     a { text-decoration: none; color: inherit; }
-
-    /* ── GOLD TOP BAR ── */
-    .top-bar {
-      height: 4px;
-      background: var(--gold);
-    }
+    .top-bar { height: 4px; background: var(--gold); }
 
     /* ── NAV ── */
     nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 0 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 60px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 0 3rem; display: flex; align-items: center;
+      justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100;
     }
-
-    .wordmark {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      letter-spacing: 0.01em;
+    .wordmark { font-size: 1.15rem; font-weight: 700; color: var(--charcoal); letter-spacing: 0.01em; }
+    .nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+    .nav-section-label {
+      font-family: 'Lato', sans-serif; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+      padding-right: 0.75rem; padding-left: 0.5rem; white-space: nowrap;
+      border-right: 1px solid var(--border); margin-right: 0.75rem;
     }
-
-    .nav-links {
-      display: flex;
-      gap: 2.5rem;
-      list-style: none;
-    }
-
+    .nav-links li:not(.nav-section-label):not(.nav-sep) { margin-left: 0; }
     .nav-links a {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--charcoal);
-      transition: color 0.2s;
+      font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal);
+      transition: color 0.2s; padding: 0 0.85rem;
     }
-
     .nav-links a:hover { color: var(--gold); }
-
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-      padding: 4px;
-    }
-
-    .nav-toggle span {
-      display: block;
-      width: 22px;
-      height: 2px;
-      background: var(--charcoal);
-    }
+    .nav-sep { width: 1px; height: 18px; background: var(--border); margin: 0 0.5rem; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--charcoal); }
 
     /* ── HERO ── */
     .hero {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 4rem 3rem 3rem;
-      display: grid;
-      grid-template-columns: 65fr 1px 35fr;
-      gap: 0;
-      align-items: start;
+      max-width: 1140px; margin: 0 auto; padding: 4rem 3rem 3rem;
+      display: grid; grid-template-columns: 65fr 1px 35fr; gap: 0; align-items: start;
     }
-
-    /* Left column */
-    .hero-main {
-      padding-right: 3rem;
-    }
-
-    .featured-label {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .hero-headline {
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1.2;
-      color: var(--charcoal);
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-excerpt {
-      font-size: 1rem;
-      color: #444;
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-      max-width: 560px;
-    }
-
-    .hero-byline {
-      font-size: 0.82rem;
-      color: var(--muted);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-byline strong {
-      color: var(--charcoal);
-      font-weight: 700;
-    }
-
+    .hero-main { padding-right: 3rem; }
+    .featured-label { font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .hero-headline { font-size: 2.2rem; font-weight: 700; line-height: 1.2; color: var(--charcoal); margin-bottom: 1.25rem; }
+    .hero-excerpt { font-size: 1rem; color: #444; line-height: 1.7; margin-bottom: 1.25rem; max-width: 560px; }
+    .hero-byline { font-size: 0.82rem; color: var(--muted); letter-spacing: 0.02em; }
     .hero-read-more {
-      display: inline-block;
-      margin-top: 1.5rem;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border-bottom: 1px solid var(--gold);
-      padding-bottom: 1px;
-      transition: opacity 0.2s;
+      display: inline-block; margin-top: 1.5rem;
+      font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+      border-bottom: 1px solid var(--gold); padding-bottom: 1px; transition: opacity 0.2s;
     }
-
     .hero-read-more:hover { opacity: 0.75; }
-
-    /* Divider */
-    .hero-divider {
-      width: 1px;
-      background: var(--gold);
-      align-self: stretch;
-      min-height: 240px;
-    }
-
-    /* Right column */
-    .hero-sidebar {
-      padding-left: 3rem;
-    }
-
-    .sidebar-label {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-    }
-
-    .sidebar-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 1.1rem;
-    }
-
-    .sidebar-list li {
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
-    }
-
-    .sidebar-bullet {
-      color: var(--gold);
-      font-size: 1rem;
-      line-height: 1.3;
-      flex-shrink: 0;
-      margin-top: 0.05rem;
-    }
-
-    .sidebar-list a {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 0.92rem;
-      color: var(--charcoal);
-      line-height: 1.4;
-      transition: color 0.2s;
-    }
-
+    .hero-divider { width: 1px; background: var(--gold); align-self: stretch; min-height: 240px; }
+    .hero-sidebar { padding-left: 3rem; }
+    .sidebar-label { font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.25rem; }
+    .sidebar-list { list-style: none; display: flex; flex-direction: column; gap: 1.1rem; }
+    .sidebar-list li { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .sidebar-bullet { color: var(--gold); font-size: 1rem; line-height: 1.3; flex-shrink: 0; margin-top: 0.05rem; }
+    .sidebar-list a { font-family: 'Libre Baskerville', Georgia, serif; font-size: 0.92rem; color: var(--charcoal); line-height: 1.4; transition: color 0.2s; }
     .sidebar-list a:hover { color: var(--gold); }
-
-    /* ── HERO BORDER ── */
-    .hero-border {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 3rem;
-    }
-
-    .hero-border hr {
-      border: none;
-      border-top: 1px solid var(--border);
-    }
+    .hero-border { max-width: 1140px; margin: 0 auto; padding: 0 3rem; }
+    .hero-border hr { border: none; border-top: 1px solid var(--border); }
 
     /* ── STAT STRIP ── */
-    .stat-strip {
-      background: var(--warm-white);
-      padding: 3rem 3rem;
-    }
-
-    .stat-strip-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-    }
-
-    .stat-item {
-      text-align: center;
-      padding: 1.5rem 2rem;
-      border-right: 1px solid var(--border);
-    }
-
+    .stat-strip { background: var(--warm-white); padding: 3rem 3rem; }
+    .stat-strip-inner { max-width: 1140px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+    .stat-item { text-align: center; padding: 1.5rem 2rem; border-right: 1px solid var(--border); }
     .stat-item:last-child { border-right: none; }
-
-    .stat-number {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 4rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 0.75rem;
+    .stat-number-link {
+      display: block; font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 4rem; font-weight: 700; color: var(--gold); line-height: 1;
+      margin-bottom: 0.75rem; text-decoration: none; transition: opacity 0.2s;
     }
-
-    .stat-label {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.88rem;
-      color: var(--charcoal);
-      line-height: 1.5;
-      max-width: 200px;
-      margin: 0 auto;
-    }
+    .stat-number-link:hover { opacity: 0.75; }
+    .stat-label { font-family: 'Lato', sans-serif; font-size: 0.88rem; color: var(--charcoal); line-height: 1.5; max-width: 200px; margin: 0 auto; }
+    .stat-hint { font-size: 0.72rem; color: var(--gold); letter-spacing: 0.06em; margin-top: 0.35rem; text-transform: uppercase; font-weight: 700; }
 
     /* ── ARTICLE GRID ── */
-    .article-section {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 3.5rem 3rem;
-    }
-
-    .section-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 2px solid var(--charcoal);
-    }
-
-    .section-title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      letter-spacing: 0.02em;
-    }
-
-    .section-rule {
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
-
-    .article-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 0;
-    }
-
-    .article-card {
-      padding: 2rem 2.5rem 2rem 0;
-      border-right: 1px solid var(--border);
-    }
-
-    .article-card:last-child {
-      border-right: none;
-      padding-right: 0;
-      padding-left: 2.5rem;
-    }
-
-    .article-card:nth-child(2) {
-      padding-left: 2.5rem;
-    }
-
-    .article-card + .article-card {
-      border-top: none;
-    }
-
-    .card-category {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.6rem;
-    }
-
-    .card-headline {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      line-height: 1.35;
-      margin-bottom: 0.7rem;
-    }
-
-    .card-excerpt {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.88rem;
-      color: #555;
-      line-height: 1.65;
-      margin-bottom: 1rem;
-    }
-
-    .card-read-more {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      color: var(--gold);
-      text-transform: uppercase;
-      transition: opacity 0.2s;
-    }
-
+    .article-section { max-width: 1140px; margin: 0 auto; padding: 3.5rem 3rem; }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 2rem; padding-bottom: 0.75rem; border-bottom: 2px solid var(--charcoal); }
+    .section-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1rem; font-weight: 700; color: var(--charcoal); letter-spacing: 0.02em; }
+    .section-rule { flex: 1; height: 1px; background: var(--border); }
+    .article-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+    .article-card { padding: 2rem 2.5rem 2rem 0; border-right: 1px solid var(--border); }
+    .article-card:last-child { border-right: none; padding-right: 0; padding-left: 2.5rem; }
+    .article-card:nth-child(2) { padding-left: 2.5rem; }
+    .grid-row-divider { grid-column: 1 / -1; height: 1px; background: var(--border); margin: 0; }
+    .card-category { font-family: 'Lato', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .card-headline { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.05rem; font-weight: 700; color: var(--charcoal); line-height: 1.35; margin-bottom: 0.7rem; }
+    .card-headline a { color: inherit; }
+    .card-headline a:hover { color: var(--gold); }
+    .card-excerpt { font-family: 'Lato', sans-serif; font-size: 0.88rem; color: #555; line-height: 1.65; margin-bottom: 1rem; }
+    .card-read-more { font-family: 'Lato', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; color: var(--gold); text-transform: uppercase; transition: opacity 0.2s; }
     .card-read-more:hover { opacity: 0.7; }
 
-    /* Row border between grid rows */
-    .article-grid-row {
-      display: contents;
-    }
-
-    .grid-row-divider {
-      grid-column: 1 / -1;
-      height: 1px;
-      background: var(--border);
-      margin: 0;
-    }
-
     /* ── PRINCIPLES BAND ── */
-    .principles-band {
-      background: var(--charcoal);
-      padding: 4rem 3rem;
-    }
-
-    .principles-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-
-    .principles-header {
-      margin-bottom: 2.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(201, 146, 42, 0.4);
-    }
-
-    .principles-title {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-
-    .principles-list {
-      list-style: none;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem 4rem;
-      counter-reset: principle;
-    }
-
-    .principles-list li {
-      counter-increment: principle;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
-    }
-
-    .principle-num {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-      flex-shrink: 0;
-      min-width: 1.6rem;
-    }
-
-    .principle-text {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.88);
-      line-height: 1.65;
-    }
+    .principles-band { background: var(--charcoal); padding: 4rem 3rem; }
+    .principles-inner { max-width: 1140px; margin: 0 auto; }
+    .principles-header { margin-bottom: 2.5rem; padding-bottom: 1rem; border-bottom: 1px solid rgba(201,146,42,0.4); }
+    .principles-title { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.4rem; font-weight: 700; color: var(--white); }
+    .principles-list { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 2rem 4rem; counter-reset: principle; }
+    .principles-list li { counter-increment: principle; display: flex; gap: 1rem; align-items: flex-start; }
+    .principle-num { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.4rem; font-weight: 700; color: var(--gold); line-height: 1; flex-shrink: 0; min-width: 1.6rem; }
+    .principle-text { font-family: 'Lato', sans-serif; font-size: 0.92rem; color: rgba(255,255,255,0.88); line-height: 1.65; }
 
     /* ── SECTOR BAND ── */
-    .sector-band {
-      background: var(--warm-white);
-      padding: 3.5rem 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .sector-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-    }
-
-    .sector-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      margin-top: 2rem;
-    }
-
-    .sector-item {
-      padding: 1.5rem 2rem 1.5rem 0;
-      border-right: 1px solid var(--border);
-    }
-
-    .sector-item:last-child {
-      border-right: none;
-      padding-right: 0;
-      padding-left: 2rem;
-    }
-
-    .sector-item:nth-child(2),
-    .sector-item:nth-child(3) {
-      padding-left: 2rem;
-    }
-
-    .sector-name {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 0.5rem;
-    }
-
-    .sector-desc {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.85rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .sector-band { background: var(--warm-white); padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .sector-inner { max-width: 1140px; margin: 0 auto; }
+    .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 2rem; }
+    .sector-row { display: contents; }
+    .sector-item { padding: 1.25rem 2rem 1.25rem 0; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .sector-item:nth-child(3n) { border-right: none; padding-right: 0; }
+    .sector-item:nth-child(3n+2), .sector-item:nth-child(3n+3) { padding-left: 2rem; }
+    .sector-item:nth-last-child(-n+3) { border-bottom: none; }
+    .sector-name { font-family: 'Libre Baskerville', Georgia, serif; font-size: 0.95rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .sector-desc { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
 
     /* ── SUBSCRIBE ── */
-    .subscribe-band {
-      padding: 3.5rem 3rem;
-      border-top: 1px solid var(--border);
-    }
-
-    .subscribe-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      gap: 4rem;
-    }
-
-    .subscribe-copy {
-      flex: 1;
-    }
-
-    .subscribe-copy h2 {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--charcoal);
-      margin-bottom: 0.4rem;
-    }
-
-    .subscribe-copy p {
-      font-size: 0.88rem;
-      color: var(--muted);
-    }
-
-    .subscribe-form {
-      display: flex;
-      gap: 0;
-      flex-shrink: 0;
-    }
-
-    .subscribe-form input[type="email"] {
-      padding: 0.7rem 1.25rem;
-      border: 1px solid var(--border);
-      border-right: none;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.9rem;
-      color: var(--text);
-      width: 260px;
-      outline: none;
-      background: var(--white);
-    }
-
-    .subscribe-form input[type="email"]:focus {
-      border-color: var(--gold);
-    }
-
-    .subscribe-form button {
-      background: var(--charcoal);
-      color: var(--white);
-      border: 1px solid var(--charcoal);
-      padding: 0.7rem 1.5rem;
-      font-family: 'Lato', sans-serif;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-
-    .subscribe-form button:hover {
-      background: var(--gold);
-      border-color: var(--gold);
-    }
+    .subscribe-band { padding: 3.5rem 3rem; border-top: 1px solid var(--border); }
+    .subscribe-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; gap: 4rem; }
+    .subscribe-copy { flex: 1; }
+    .subscribe-copy h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.25rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .subscribe-copy p { font-size: 0.88rem; color: var(--muted); }
+    .subscribe-form { display: flex; gap: 0; flex-shrink: 0; }
+    .subscribe-form input[type="email"] { padding: 0.7rem 1.25rem; border: 1px solid var(--border); border-right: none; font-family: 'Lato', sans-serif; font-size: 0.9rem; color: var(--text); width: 260px; outline: none; background: var(--white); transition: border-color 0.2s; }
+    .subscribe-form input[type="email"]:focus { border-color: var(--gold); }
+    .subscribe-form button { background: var(--charcoal); color: var(--white); border: 1px solid var(--charcoal); padding: 0.7rem 1.5rem; font-family: 'Lato', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .subscribe-form button:hover { background: var(--gold); border-color: var(--gold); }
+    .subscribe-success { display: none; font-size: 0.9rem; font-weight: 700; color: var(--gold); padding: 0.5rem 0; }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--charcoal);
-      padding: 3rem;
-      border-top: 3px solid var(--gold);
-    }
-
-    .footer-inner {
-      max-width: 1140px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .footer-wordmark {
-      font-family: 'Libre Baskerville', Georgia, serif;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.3rem;
-    }
-
-    .footer-tagline {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.55);
-    }
-
-    .footer-copy {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
-      text-align: right;
-    }
+    footer { background: var(--charcoal); padding: 3rem; border-top: 3px solid var(--gold); }
+    .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .footer-wordmark { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .footer-tagline { font-family: 'Lato', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .footer-copy { font-family: 'Lato', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.4); text-align: right; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 0 1.5rem; }
-
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 60px;
-        left: 0;
-        right: 0;
-        background: var(--white);
-        border-bottom: 1px solid var(--border);
-        padding: 1.25rem 1.5rem;
-        gap: 1rem;
-      }
-
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; gap: 1rem; }
       .nav-links.open { display: flex; }
+      .nav-section-label { border-right: none; padding: 0; margin: 0; }
+      .nav-sep { width: 100%; height: 1px; margin: 0.25rem 0; }
+      .nav-links a { padding: 0; }
       .nav-toggle { display: flex; }
-
-      .hero {
-        grid-template-columns: 1fr;
-        padding: 2.5rem 1.5rem 2rem;
-        gap: 2rem;
-      }
-
+      .hero { grid-template-columns: 1fr; padding: 2.5rem 1.5rem 2rem; gap: 2rem; }
       .hero-main { padding-right: 0; }
       .hero-divider { display: none; }
       .hero-sidebar { padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
       .hero-headline { font-size: 1.65rem; }
-
       .hero-border { padding: 0 1.5rem; }
-
       .stat-strip { padding: 2rem 1.5rem; }
       .stat-strip-inner { grid-template-columns: 1fr; gap: 0; }
       .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
       .stat-item:last-child { border-bottom: none; }
-
       .article-section { padding: 2.5rem 1.5rem; }
       .article-grid { grid-template-columns: 1fr; }
       .article-card { padding: 1.5rem 0 !important; border-right: none !important; border-bottom: 1px solid var(--border); }
       .article-card:last-child { border-bottom: none; }
-
       .principles-band { padding: 3rem 1.5rem; }
       .principles-list { grid-template-columns: 1fr; gap: 1.5rem; }
-
       .sector-band { padding: 2.5rem 1.5rem; }
       .sector-grid { grid-template-columns: 1fr 1fr; }
-      .sector-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 1.25rem 0 !important; }
-      .sector-item:nth-last-child(-n+2) { border-bottom: none; }
-
+      .sector-item { border-right: none !important; padding-left: 0 !important; padding-right: 0 !important; }
+      .sector-item:nth-child(odd) { border-right: 1px solid var(--border) !important; padding-right: 1.5rem !important; }
+      .sector-item:nth-child(even) { padding-left: 1.5rem !important; }
       .subscribe-band { padding: 2.5rem 1.5rem; }
       .subscribe-inner { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
       .subscribe-form { flex-direction: column; width: 100%; }
       .subscribe-form input[type="email"] { width: 100%; border-right: 1px solid var(--border); }
-      .subscribe-form input[type="email"]:focus { border-color: var(--gold); }
-
       footer { padding: 2rem 1.5rem; }
       .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
       .footer-copy { text-align: center; }
@@ -656,7 +193,6 @@
 </head>
 <body>
 
-  <!-- GOLD TOP BAR -->
   <div class="top-bar"></div>
 
   <!-- NAV -->
@@ -666,42 +202,39 @@
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="#governance">Governance</a></li>
-      <li><a href="#leadership">Leadership</a></li>
-      <li><a href="#strategy">Strategy</a></li>
+      <li class="nav-section-label">Topics</li>
+      <li><a href="/governance.html">Governance</a></li>
+      <li><a href="/leadership.html">Leadership</a></li>
+      <li><a href="/strategy.html">Strategy</a></li>
+      <li class="nav-sep" aria-hidden="true"></li>
       <li><a href="#about">About</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero" aria-label="Featured article">
-    <!-- LEFT: Featured -->
     <div class="hero-main">
       <div class="featured-label">Featured</div>
       <h1 class="hero-headline">The One Question Every Board Should Ask at Every Meeting</h1>
-      <p class="hero-excerpt">Before the meeting ends: "Did we govern today, or did we manage?" If the honest answer is "we managed," the meeting was a missed opportunity — not a failure, but a pattern worth breaking. Governance and management are different activities, and most boards conflate them at the cost of the outcomes they exist to produce.</p>
-      <div class="hero-byline"><strong>Airick Journey Crabill</strong> &nbsp;·&nbsp; June 2026</div>
-      <a href="posts/one-question-every-meeting.html" class="hero-read-more">Read the Article →</a>
+      <p class="hero-excerpt">Before the meeting ends: "Did we govern today, or did we manage?" If the honest answer is "we managed," the meeting was a missed opportunity. Governance and management are different activities, and most boards conflate them at the cost of the outcomes they exist to produce.</p>
+      <div class="hero-byline">June 2026 &nbsp;·&nbsp; Fundamentals</div>
+      <a href="posts/one-question-every-meeting.html" class="hero-read-more">Read the Article &rarr;</a>
     </div>
-
-    <!-- GOLD DIVIDER -->
     <div class="hero-divider" aria-hidden="true"></div>
-
-    <!-- RIGHT: Also in this issue -->
     <div class="hero-sidebar">
-      <div class="sidebar-label">Also in this issue</div>
+      <div class="sidebar-label">Also this week</div>
       <ul class="sidebar-list">
         <li>
-          <span class="sidebar-bullet">—</span>
+          <span class="sidebar-bullet">&mdash;</span>
           <a href="posts/nonprofit-governance-advantage.html">The Nonprofit Board That Governs Well Is a Competitive Advantage</a>
         </li>
         <li>
-          <span class="sidebar-bullet">—</span>
-          <a href="#">Why "Strategic Plan" Isn't the Same as "Governing Well"</a>
+          <span class="sidebar-bullet">&mdash;</span>
+          <a href="posts/strategic-plan-vs-governing.html">Why "Strategic Plan" Isn't the Same as "Governing Well"</a>
         </li>
         <li>
-          <span class="sidebar-bullet">—</span>
-          <a href="#">What the Board Monitors Is What the Organization Prioritizes</a>
+          <span class="sidebar-bullet">&mdash;</span>
+          <a href="posts/board-ceo-boundary.html">The Board&ndash;CEO Boundary: Why Blurring It Weakens Both</a>
         </li>
       </ul>
     </div>
@@ -713,69 +246,69 @@
   <section class="stat-strip" aria-label="Key governance findings">
     <div class="stat-strip-inner">
       <div class="stat-item">
-        <div class="stat-number">5</div>
+        <a href="/five-practices.html" class="stat-number-link">5</a>
         <div class="stat-label">governance practices that change outcomes — regardless of sector</div>
+        <div class="stat-hint">Read more &rarr;</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">3</div>
+        <a href="/three-board-types.html" class="stat-number-link">3</a>
         <div class="stat-label">board types that consistently underperform — and what they share</div>
+        <div class="stat-hint">Read more &rarr;</div>
       </div>
       <div class="stat-item">
-        <div class="stat-number">1</div>
+        <a href="/posts/one-question-every-meeting.html" class="stat-number-link">1</a>
         <div class="stat-label">question every board should ask at the close of every meeting</div>
+        <div class="stat-hint">Read more &rarr;</div>
       </div>
     </div>
   </section>
 
   <!-- ARTICLE GRID -->
-  <article class="article-section" id="governance">
+  <article class="article-section">
     <div class="section-header">
       <h2 class="section-title">Recent Insights</h2>
       <div class="section-rule" aria-hidden="true"></div>
     </div>
 
     <div class="article-grid">
-      <!-- Row 1 -->
       <div class="article-card">
         <div class="card-category">Fundamentals</div>
-        <h3 class="card-headline">The One Question Every Board Should Ask at Every Meeting</h3>
+        <h3 class="card-headline"><a href="posts/one-question-every-meeting.html">The One Question Every Board Should Ask at Every Meeting</a></h3>
         <p class="card-excerpt">Governance and management are different activities. Most boards conflate them — at the cost of the outcomes they exist to produce.</p>
-        <a href="posts/one-question-every-meeting.html" class="card-read-more">Read more →</a>
+        <a href="posts/one-question-every-meeting.html" class="card-read-more">Read more &rarr;</a>
       </div>
       <div class="article-card">
         <div class="card-category">Nonprofit</div>
-        <h3 class="card-headline">The Nonprofit Board That Governs Well Is a Competitive Advantage</h3>
+        <h3 class="card-headline"><a href="posts/nonprofit-governance-advantage.html">The Nonprofit Board That Governs Well Is a Competitive Advantage</a></h3>
         <p class="card-excerpt">Most nonprofit boards never spend significant time monitoring whether they're achieving their mission. Here's why that's backwards — and how to fix it.</p>
-        <a href="posts/nonprofit-governance-advantage.html" class="card-read-more">Read more →</a>
+        <a href="posts/nonprofit-governance-advantage.html" class="card-read-more">Read more &rarr;</a>
       </div>
       <div class="article-card">
         <div class="card-category">Strategy</div>
-        <h3 class="card-headline">Why "Strategic Plan" Isn't the Same as "Governing Well"</h3>
+        <h3 class="card-headline"><a href="posts/strategic-plan-vs-governing.html">Why "Strategic Plan" Isn't the Same as "Governing Well"</a></h3>
         <p class="card-excerpt">Boards that confuse having a strategic plan with doing governance have a plan. They don't have accountability. The distinction matters enormously.</p>
-        <a href="#" class="card-read-more">Read more →</a>
+        <a href="posts/strategic-plan-vs-governing.html" class="card-read-more">Read more &rarr;</a>
       </div>
 
-      <!-- Divider -->
       <div class="grid-row-divider"></div>
 
-      <!-- Row 2 -->
       <div class="article-card" style="padding-top:2rem;">
         <div class="card-category">Leadership</div>
-        <h3 class="card-headline">The Board–CEO Boundary: Why Blurring It Weakens Both</h3>
+        <h3 class="card-headline"><a href="posts/board-ceo-boundary.html">The Board&ndash;CEO Boundary: Why Blurring It Weakens Both</a></h3>
         <p class="card-excerpt">Every governance system requires a clear line between the board's work and the executive's work. When that line blurs, both parties become less effective.</p>
-        <a href="#" class="card-read-more">Read more →</a>
-      </div>
-      <div class="article-card" style="padding-top:2rem;">
-        <div class="card-category">Accountability</div>
-        <h3 class="card-headline">Accountability Isn't Punishment — It's Measurement</h3>
-        <p class="card-excerpt">A board that cannot measure outcomes cannot govern. Accountability is the mechanism by which boards fulfill their fundamental responsibility.</p>
-        <a href="#" class="card-read-more">Read more →</a>
+        <a href="posts/board-ceo-boundary.html" class="card-read-more">Read more &rarr;</a>
       </div>
       <div class="article-card" style="padding-top:2rem;">
         <div class="card-category">Governance</div>
-        <h3 class="card-headline">Every Governance Process Should Be Traceable to an Outcome</h3>
+        <h3 class="card-headline"><a href="posts/accountability-measurement.html">Accountability Isn't Punishment — It's Measurement</a></h3>
+        <p class="card-excerpt">A board that cannot measure outcomes cannot govern. Accountability is the mechanism by which boards fulfill their fundamental responsibility.</p>
+        <a href="posts/accountability-measurement.html" class="card-read-more">Read more &rarr;</a>
+      </div>
+      <div class="article-card" style="padding-top:2rem;">
+        <div class="card-category">Governance</div>
+        <h3 class="card-headline"><a href="posts/governance-process-traceable.html">Every Governance Process Should Be Traceable to an Outcome</a></h3>
         <p class="card-excerpt">If a governance process cannot be traced back to an outcome it serves, it shouldn't be in the process. Most boards have never asked the question.</p>
-        <a href="#" class="card-read-more">Read more →</a>
+        <a href="posts/governance-process-traceable.html" class="card-read-more">Read more &rarr;</a>
       </div>
     </div>
   </article>
@@ -812,7 +345,7 @@
   </section>
 
   <!-- SECTOR BAND -->
-  <section class="sector-band" id="leadership">
+  <section class="sector-band">
     <div class="sector-inner">
       <div class="section-header">
         <h2 class="section-title">Governance Applies to Every Board</h2>
@@ -820,36 +353,48 @@
       </div>
       <div class="sector-grid">
         <div class="sector-item">
-          <div class="sector-name">School Boards</div>
-          <p class="sector-desc">Responsible for student learning outcomes across the communities they serve — not for managing schools.</p>
+          <div class="sector-name">Corporate Boards</div>
+          <p class="sector-desc">Accountable to shareholders and stakeholders for long-term value — not quarterly optics or executive protection.</p>
         </div>
         <div class="sector-item">
-          <div class="sector-name">Nonprofit Boards</div>
-          <p class="sector-desc">Stewards of mission and resources for beneficiaries who have no market recourse if the board fails.</p>
+          <div class="sector-name">Nonprofit &amp; Foundation Boards</div>
+          <p class="sector-desc">Stewards of mission and resources for beneficiaries who have no market recourse if the board fails them.</p>
         </div>
         <div class="sector-item">
-          <div class="sector-name">Hospital &amp; Health System Boards</div>
+          <div class="sector-name">Healthcare &amp; Hospital Boards</div>
           <p class="sector-desc">Accountable for patient outcomes and community health — not for institutional self-preservation.</p>
         </div>
         <div class="sector-item">
-          <div class="sector-name">Housing Authority Boards</div>
-          <p class="sector-desc">Responsible for safe, stable housing outcomes for residents — not for bureaucratic continuity.</p>
+          <div class="sector-name">University &amp; Higher Ed Boards</div>
+          <p class="sector-desc">Responsible for educational mission and institutional integrity, serving students and the public good.</p>
+        </div>
+        <div class="sector-item">
+          <div class="sector-name">Tech Startup &amp; AI Company Boards</div>
+          <p class="sector-desc">Navigating fast-moving markets while maintaining accountability for safety, ethics, and long-term mission.</p>
+        </div>
+        <div class="sector-item">
+          <div class="sector-name">Government &amp; Public Institution Boards</div>
+          <p class="sector-desc">Accountable to the public for outcomes that serve constituents — not for bureaucratic continuity or political patronage.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- SUBSCRIBE -->
-  <section class="subscribe-band" id="strategy">
+  <section class="subscribe-band" id="subscribe">
     <div class="subscribe-inner">
       <div class="subscribe-copy">
         <h2>Governance insights for serious board members.</h2>
-        <p>New articles and analysis, delivered when they're ready — not on a schedule.</p>
+        <p>New articles and analysis, delivered when they're ready.</p>
       </div>
-      <form class="subscribe-form" onsubmit="return false;">
-        <input type="email" placeholder="Your email address" aria-label="Email address">
-        <button type="submit">Subscribe</button>
-      </form>
+      <div>
+        <form class="subscribe-form" id="sub-form" action="https://formspree.io/f/xayzdydv" method="POST">
+          <input type="hidden" name="form" value="effectiveboards-subscribe">
+          <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+        <div class="subscribe-success" id="sub-success">&#x2713; You're subscribed. New articles coming your way.</div>
+      </div>
     </div>
   </section>
 
@@ -861,11 +406,17 @@
         <div class="footer-tagline">Governance principles for boards that lead.</div>
       </div>
       <div class="footer-copy">
-        <p>© 2026 Effective Boards</p>
-        <p>Airick Journey Crabill</p>
+        <p>&copy; 2026 Effective Boards</p>
       </div>
     </div>
   </footer>
 
+  <script>
+    document.getElementById('sub-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const r = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+      if (r.ok) { e.target.style.display='none'; document.getElementById('sub-success').style.display='block'; }
+    });
+  </script>
 </body>
 </html>
