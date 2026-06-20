@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why "Strategic Plan" Isn't the Same as "Governing Well" — Effective Boards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --slate-blue: #2B4590;
+      --warm-gray: #8D99AE;
+      --white: #FFFFFF;
+      --dark-slate: #1A2A5E;
+      --light-silver: #EEF0F5;
+    }
+    body { font-family: 'Roboto', sans-serif; color: #2c2c2c; line-height: 1.6; }
+    h1, h2, h3 { font-family: 'Roboto Slab', serif; }
+    nav {
+      position: sticky; top: 0; z-index: 100; background: var(--white);
+      border-bottom: 3px solid var(--slate-blue); padding: 0 2rem;
+      display: flex; align-items: center; justify-content: space-between; height: 64px;
+    }
+    .nav-logo { font-family: 'Roboto Slab', serif; font-size: 1.25rem; font-weight: 700; color: var(--slate-blue); text-decoration: none; }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { text-decoration: none; color: #444; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.03em; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--slate-blue); }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--slate-blue); }
+    .article-wrap { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .breadcrumb { font-size: 0.85rem; margin-bottom: 2rem; }
+    .breadcrumb a { color: var(--slate-blue); text-decoration: none; font-weight: 500; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .post-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate-blue); margin-bottom: 0.75rem; }
+    .article-wrap h1 { font-size: 2rem; color: var(--dark-slate); line-height: 1.25; margin-bottom: 0.5rem; }
+    .post-date { font-size: 0.85rem; color: var(--warm-gray); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e3ec; }
+    .article-body p { margin-bottom: 1.4rem; font-size: 1.05rem; color: #333; line-height: 1.75; }
+    .article-body h2 { font-size: 1.3rem; color: var(--dark-slate); margin: 2.5rem 0 1rem; }
+    .article-body blockquote { border-left: 4px solid var(--slate-blue); margin: 2rem 0; padding: 1rem 1.5rem; background: var(--light-silver); font-size: 1.1rem; color: var(--dark-slate); font-family: 'Roboto Slab', serif; font-style: italic; }
+    .subscribe-strip { background: var(--dark-slate); padding: 2.5rem 2rem; text-align: center; }
+    .subscribe-strip h2 { color: var(--white); font-size: 1.25rem; margin-bottom: 1.25rem; }
+    .subscribe-form { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
+    .subscribe-form input[type="email"] { padding: 0.65rem 1.25rem; border: none; border-radius: 3px; font-size: 0.95rem; width: 260px; font-family: 'Roboto', sans-serif; }
+    .subscribe-form button { background: var(--white); color: var(--dark-slate); border: none; padding: 0.65rem 1.5rem; border-radius: 3px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: 'Roboto', sans-serif; }
+    .subscribe-success { display: none; color: var(--gold-light, #E8C870); font-weight: 600; padding: 0.5rem 0; font-size: 0.95rem; }
+    footer { background: var(--dark-slate); border-top: 1px solid rgba(255,255,255,0.1); padding: 2rem; text-align: center; color: rgba(255,255,255,0.65); font-size: 0.85rem; }
+    footer p { margin-bottom: 0.25rem; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 2px solid var(--slate-blue); padding: 1rem 2rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .article-wrap h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">Effective Boards</a>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="/governance.html">Governance</a></li>
+    <li><a href="/leadership.html">Leadership</a></li>
+    <li><a href="/strategy.html">Strategy</a></li>
+    <li><a href="/#about">About</a></li>
+    <li><a href="/#subscribe">Subscribe</a></li>
+  </ul>
+</nav>
+
+<div class="article-wrap">
+  <div class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/strategy.html">Strategy</a>
+  </div>
+  <div class="post-label">Strategy</div>
+  <h1>Why "Strategic Plan" Isn't the Same as "Governing Well"</h1>
+  <div class="post-date">June 2, 2026</div>
+
+  <div class="article-body">
+    <p>Every few years, a board retreats to a lodge, a hotel conference room, or a video call that runs too long, and produces a strategic plan. The plan has goals, timelines, priorities, and perhaps a vision statement that someone labored over. It gets approved, printed, or posted to a shared drive. And then — in the vast majority of cases — very little changes about how the board governs.</p>
+
+    <p>This is not a coincidence. It reflects a fundamental confusion about what a strategic plan is and what governance actually requires.</p>
+
+    <h2>The Plan Belongs to the Executive</h2>
+
+    <p>A strategic plan is a management tool. It describes how an organization intends to pursue its goals — what initiatives will be undertaken, what resources will be deployed, what milestones will mark progress. That is work for the executive and the staff. It requires operational knowledge, implementation judgment, and day-to-day leadership. All of those things belong to the CEO and the team they lead.</p>
+
+    <p>When a board "does" strategic planning, it typically produces one of two things: a plan the executive would have produced anyway (which means the board wasted its retreat), or a plan that reflects what board members think they know about operations (which means the executive now has to manage around board preferences while also running the organization). Neither outcome is governance.</p>
+
+    <p>The board's role in strategy is not to write the plan. It is to set the outcome goals the plan should serve — and then to monitor whether those outcomes are being achieved.</p>
+
+    <h2>Direction-Setting Is Not Plan-Writing</h2>
+
+    <p>Setting direction means answering a different set of questions than strategic planning does. It means deciding: who are we here to serve, and what does meaningful improvement in their lives look like? What does success require that is currently absent? What will we hold ourselves and the executive accountable for achieving, and over what time horizon?</p>
+
+    <p>These are governance questions. They belong to the board. And they are distinct from how the organization should organize itself, what programs it should run, how it should allocate staff, or which vendors it should engage. Once the board has answered the governance questions, the executive's job is to figure out how to get there.</p>
+
+    <blockquote>"A strategic plan without board-level monitoring is not a strategy document — it is a hope document. It records what the organization intended, not what it achieved."</blockquote>
+
+    <p>This distinction applies across every sector. A hospital board that sets clinical outcome goals and monitors patient results is governing. A hospital board that co-authors a strategic plan about which service lines to expand is managing. A university board that defines what student success means and tracks it year over year is governing. A university board that debates academic program design in committee is managing. A corporate board that holds the CEO accountable to specific financial and operational outcomes is governing. A corporate board that reviews and approves every major operational decision is managing.</p>
+
+    <h2>Accountability Is the Missing Ingredient</h2>
+
+    <p>The single most common failure pattern in governance is this: the board approves a strategic plan, delegates implementation entirely to the executive, and then receives executive-authored updates on progress at subsequent meetings. There is no independent monitoring. There is no board-level data review. There is no accountability mechanism. The board has, in effect, outsourced both the plan and the accountability for that plan to the same person.</p>
+
+    <p>This arrangement works reasonably well when the executive is performing well and outcomes are improving. It fails catastrophically when they aren't — because the board has no independent basis for knowing whether the executive's self-report is accurate, and no established practice of evaluating results against goals.</p>
+
+    <p>Boards that govern well do not wait for the executive to tell them how things are going. They build their own monitoring cadence: outcome data reviewed on a calendar, against written goals the board itself set, using indicators the board itself specified. The executive presents. The board evaluates. Those are different roles, and conflating them is where governance breaks down.</p>
+
+    <h2>What a Governing Board Does Instead</h2>
+
+    <p>The shift from plan-focused to outcome-focused governance is not complicated, but it is a genuine change in practice. It means the board's primary work is not reviewing the plan — it is reviewing results. It means CEO evaluation is tied to measurable outcomes, not to the quality of the plan document. It means the board has written, specific, time-bound success criteria that were set before results came in, not after.</p>
+
+    <p>It also means the board has let go of something: the satisfying feeling of producing a plan. Strategic planning retreats often feel like the most engaged a board gets. Members contribute ideas, debate priorities, feel the weight of decision. But if that engagement is not connected to an accountability system that persists after the retreat, it produces nothing except a document.</p>
+
+    <p>The test of a board's governance is not the quality of its plan. It is whether the people the organization exists to serve are measurably better off because the board existed. That question cannot be answered by reviewing a plan. It can only be answered by measuring outcomes — and holding someone accountable for them.</p>
+  </div>
+</div>
+
+<div class="subscribe-strip" id="subscribe">
+  <h2>Governance insights for serious board members.</h2>
+  <form class="subscribe-form" id="sub-form" action="https://formspree.io/f/xayzdydv" method="POST">
+    <input type="hidden" name="form" value="effectiveboards-subscribe">
+    <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+    <button type="submit">Subscribe</button>
+  </form>
+  <div class="subscribe-success" id="sub-success">&#x2713; You're subscribed.</div>
+</div>
+<script>
+  document.getElementById('sub-form').addEventListener('submit', async e => {
+    e.preventDefault();
+    const r = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+    if (r.ok) { e.target.style.display='none'; document.getElementById('sub-success').style.display='block'; }
+  });
+</script>
+
+<footer>
+  <p>Effective Boards — governance principles that apply to any board</p>
+  <p>&copy; 2026 Effective Boards</p>
+</footer>
+
+</body>
+</html>
