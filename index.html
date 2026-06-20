@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Effective Boards — Governance Principles for Any Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --slate-blue: #2B4590;
+      --warm-gray: #8D99AE;
+      --white: #FFFFFF;
+      --dark-slate: #1A2A5E;
+      --light-silver: #EEF0F5;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      color: #2c2c2c;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Roboto Slab', serif;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 3px solid var(--slate-blue);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Roboto Slab', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--slate-blue);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #444;
+      font-weight: 500;
+      font-size: 0.9rem;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--slate-blue);
+    }
+
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--slate-blue);
+    }
+
+    /* HERO */
+    .hero {
+      background: var(--slate-blue);
+      padding: 5rem 2rem;
+      text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      color: var(--white);
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero p {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.1rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .btn {
+      display: inline-block;
+      background: var(--white);
+      color: var(--slate-blue);
+      padding: 0.75rem 2rem;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover { opacity: 0.9; }
+
+    /* SECTIONS */
+    section { padding: 4rem 2rem; }
+
+    .section-inner {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    .section-heading {
+      font-size: 1.75rem;
+      color: var(--dark-slate);
+      margin-bottom: 2rem;
+    }
+
+    /* FEATURED POST */
+    .featured { background: var(--white); }
+
+    .featured-card {
+      border-left: 4px solid var(--slate-blue);
+      padding: 2rem 2rem 2rem 2.5rem;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(43,69,144,0.07);
+      max-width: 760px;
+    }
+
+    .post-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--slate-blue);
+      margin-bottom: 0.6rem;
+    }
+
+    .featured-card h2 {
+      font-size: 1.5rem;
+      color: var(--dark-slate);
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+
+    .post-date {
+      font-size: 0.82rem;
+      color: var(--warm-gray);
+      margin-bottom: 1rem;
+    }
+
+    .featured-card p {
+      color: #444;
+      margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+
+    .read-more {
+      color: var(--slate-blue);
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 0.9rem;
+      letter-spacing: 0.02em;
+    }
+
+    .read-more:hover { text-decoration: underline; }
+
+    /* BY SECTOR */
+    .by-sector { background: var(--light-silver); }
+
+    .sector-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .sector-card {
+      background: var(--white);
+      border-top: 4px solid var(--slate-blue);
+      padding: 1.75rem;
+      box-shadow: 0 2px 8px rgba(43,69,144,0.06);
+    }
+
+    .sector-card h3 {
+      font-size: 1.1rem;
+      color: var(--dark-slate);
+      margin-bottom: 0.6rem;
+    }
+
+    .sector-card p {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.55;
+    }
+
+    /* RECENT POSTS */
+    .recent-posts { background: var(--white); }
+
+    .posts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.75rem;
+    }
+
+    .post-card {
+      border: 1px solid #e0e3ec;
+      padding: 1.75rem;
+      border-radius: 3px;
+    }
+
+    .post-card h3 {
+      font-size: 1.15rem;
+      color: var(--dark-slate);
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .post-card p {
+      font-size: 0.9rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .post-card a.read-more {
+      display: inline-block;
+    }
+
+    /* FIVE PRINCIPLES */
+    .principles {
+      background: var(--slate-blue);
+      color: var(--white);
+    }
+
+    .principles .section-heading {
+      color: var(--white);
+    }
+
+    .principles-list {
+      list-style: none;
+      counter-reset: principle;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      max-width: 780px;
+    }
+
+    .principles-list li {
+      counter-increment: principle;
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+
+    .principles-list li::before {
+      content: counter(principle);
+      min-width: 36px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Roboto Slab', serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .principles-list li span {
+      padding-top: 0.35rem;
+      font-size: 0.97rem;
+      line-height: 1.6;
+      opacity: 0.92;
+    }
+
+    /* SUBSCRIBE */
+    .subscribe {
+      background: var(--dark-slate);
+      text-align: center;
+    }
+
+    .subscribe h2 {
+      color: var(--white);
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .subscribe-form {
+      display: flex;
+      gap: 0.75rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .subscribe-form input[type="email"] {
+      padding: 0.7rem 1.25rem;
+      border: none;
+      border-radius: 3px;
+      font-size: 0.95rem;
+      width: 280px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .subscribe-form button {
+      background: var(--white);
+      color: var(--dark-slate);
+      border: none;
+      padding: 0.7rem 1.75rem;
+      border-radius: 3px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      transition: opacity 0.2s;
+    }
+
+    .subscribe-form button:hover { opacity: 0.9; }
+
+    /* FOOTER */
+    footer {
+      background: var(--dark-slate);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 2rem;
+      text-align: center;
+      color: rgba(255,255,255,0.65);
+      font-size: 0.85rem;
+    }
+
+    footer p { margin-bottom: 0.25rem; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        background: var(--white);
+        border-bottom: 2px solid var(--slate-blue);
+        padding: 1rem 2rem;
+        gap: 1rem;
+      }
+
+      .nav-links.open { display: flex; }
+
+      .nav-toggle { display: flex; }
+
+      .hero h1 { font-size: 1.7rem; }
+
+      .sector-grid { grid-template-columns: 1fr; }
+
+      .posts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">Effective Boards</a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li><a href="#recent-posts">Insights</a></li>
+      <li><a href="#by-sector">By Sector</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#subscribe">Subscribe</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <h1>Every organization has a board. Most boards are making the same mistakes.</h1>
+      <p>Effective Boards applies evidence-based governance principles to organizations of every type — from school districts to nonprofits to hospital systems. The fundamentals of good governance don't change.</p>
+      <a href="posts/one-question-every-meeting.html" class="btn">Read the Latest →</a>
+    </div>
+  </section>
+
+  <!-- FEATURED POST -->
+  <section class="featured">
+    <div class="section-inner">
+      <div class="featured-card">
+        <div class="post-label">The Fundamentals</div>
+        <h2>The One Question Every Board Should Ask at Every Meeting</h2>
+        <div class="post-date">June 16, 2026</div>
+        <p>Before the meeting ends: "Did we govern today, or did we manage?" If the honest answer is "we managed," the meeting was a missed opportunity. Not a failure — boards fix this — but a pattern worth breaking.</p>
+        <a href="posts/one-question-every-meeting.html" class="read-more">Read more →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BY SECTOR -->
+  <section class="by-sector" id="by-sector">
+    <div class="section-inner">
+      <h2 class="section-heading">Governance Applies to Every Board</h2>
+      <div class="sector-grid">
+        <div class="sector-card">
+          <h3>School Boards</h3>
+          <p>Responsible for student learning outcomes across the entire community they serve</p>
+        </div>
+        <div class="sector-card">
+          <h3>Nonprofit Boards</h3>
+          <p>Stewards of mission and resources for beneficiaries who have no market recourse</p>
+        </div>
+        <div class="sector-card">
+          <h3>Hospital &amp; Health System Boards</h3>
+          <p>Accountable for patient outcomes and community health, not institutional self-preservation</p>
+        </div>
+        <div class="sector-card">
+          <h3>Housing Authority Boards</h3>
+          <p>Responsible for safe, stable housing outcomes for residents, not for bureaucratic continuity</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENT POSTS -->
+  <section class="recent-posts" id="recent-posts">
+    <div class="section-inner">
+      <h2 class="section-heading">Recent Insights</h2>
+      <div class="posts-grid">
+        <div class="post-card">
+          <div class="post-label">Nonprofit</div>
+          <h3>The Nonprofit Board That Governs Well Is a Competitive Advantage</h3>
+          <div class="post-date">June 9, 2026</div>
+          <p>Most nonprofit boards are caught between donor relations, executive director management, and committee work. Almost none spend significant time monitoring whether they're achieving their mission. Here's why that's backwards.</p>
+          <a href="posts/nonprofit-governance-advantage.html" class="read-more">Read more →</a>
+        </div>
+        <div class="post-card">
+          <div class="post-label">Fundamentals</div>
+          <h3>Why "Strategic Plan" Isn't the Same as "Governing Well"</h3>
+          <div class="post-date">June 2, 2026</div>
+          <p>Boards that confuse having a strategic plan with doing governance have a plan. They don't have accountability. The plan and the governance system are different things — and confusing them is why most strategic plans fail.</p>
+          <a href="#" class="read-more">Read more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIVE PRINCIPLES -->
+  <section class="principles" id="about">
+    <div class="section-inner">
+      <h2 class="section-heading">Five Governance Fundamentals — Regardless of Sector</h2>
+      <ul class="principles-list">
+        <li><span>The board's job is outcomes — not operations, not activities, not plans. Outcomes.</span></li>
+        <li><span>What the board monitors is what the organization prioritizes. If student learning (or mission achievement, or patient outcomes) isn't monitored, it isn't the priority — no matter what the strategic plan says.</span></li>
+        <li><span>The board and the CEO/Executive Director need a clear boundary. Blurring it makes both parties less effective.</span></li>
+        <li><span>Every governance process should be traceable back to an outcome it serves. If it isn't, it shouldn't be in the process.</span></li>
+        <li><span>Accountability isn't punishment. It's measurement. A board that can't measure outcomes can't govern.</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SUBSCRIBE -->
+  <section class="subscribe" id="subscribe">
+    <div class="section-inner">
+      <h2>Governance insights for serious board members — weekly.</h2>
+      <form class="subscribe-form" onsubmit="return false;">
+        <input type="email" placeholder="Your email address" aria-label="Email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Effective Boards — governance principles that apply to any board</p>
+    <p>© 2026 Effective Boards</p>
+  </footer>
+
+</body>
+</html>
