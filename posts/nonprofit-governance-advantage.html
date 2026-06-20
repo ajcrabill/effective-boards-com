@@ -306,10 +306,12 @@
   <!-- SUBSCRIBE -->
   <div class="subscribe-strip" id="subscribe">
     <h2>Governance insights for serious board members — weekly.</h2>
-    <form class="subscribe-form" onsubmit="return false;">
-      <input type="email" placeholder="Your email address" aria-label="Email address">
+    <form class="subscribe-form" id="sub-form" action="https://formspree.io/f/xayzdydv" method="POST">
+        <input type="hidden" name="form" value="effectiveboards-subscribe">
+    <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
       <button type="submit">Subscribe</button>
     </form>
+    <div id="sub-success" style="display:none;color:#E8C870;font-weight:600;padding:0.5rem 0;">&#x2713; You're subscribed.</div>
   </div>
 
   <!-- FOOTER -->
@@ -318,5 +320,13 @@
     <p>© 2026 Effective Boards</p>
   </footer>
 
+
+  <script>
+    document.getElementById('sub-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const r = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+      if (r.ok) { e.target.style.display='none'; document.getElementById('sub-success').style.display='block'; }
+    });
+  </script>
 </body>
 </html>
