@@ -3,71 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Effective Boards — Governance Principles for Any Board</title>
+  <title>Effective Boards — Governance Principles for Boards That Lead</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --slate-blue: #2B4590;
-      --warm-gray: #8D99AE;
+      --charcoal: #1C2B3A;
+      --gold: #C9922A;
+      --gold-light: #E8C870;
       --white: #FFFFFF;
-      --dark-slate: #1A2A5E;
-      --light-silver: #EEF0F5;
+      --warm-white: #F7F5F2;
+      --border: #E8E4DC;
+      --text: #2C2C2C;
+      --muted: #7A7570;
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
-      color: #2c2c2c;
-      line-height: 1.6;
-    }
-
-    h1, h2, h3, h4 {
-      font-family: 'Roboto Slab', serif;
-    }
-
-    /* NAV */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      font-family: 'Lato', sans-serif;
+      color: var(--text);
+      line-height: 1.65;
       background: var(--white);
-      border-bottom: 3px solid var(--slate-blue);
-      padding: 0 2rem;
+    }
+
+    h1, h2, h3, h4, .wordmark {
+      font-family: 'Libre Baskerville', Georgia, serif;
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    /* ── GOLD TOP BAR ── */
+    .top-bar {
+      height: 4px;
+      background: var(--gold);
+    }
+
+    /* ── NAV ── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 0 3rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 64px;
+      height: 60px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    .nav-logo {
-      font-family: 'Roboto Slab', serif;
-      font-size: 1.25rem;
+    .wordmark {
+      font-size: 1.15rem;
       font-weight: 700;
-      color: var(--slate-blue);
-      text-decoration: none;
+      color: var(--charcoal);
+      letter-spacing: 0.01em;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 2.5rem;
       list-style: none;
     }
 
     .nav-links a {
-      text-decoration: none;
-      color: #444;
-      font-weight: 500;
-      font-size: 0.9rem;
-      letter-spacing: 0.03em;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--charcoal);
       transition: color 0.2s;
     }
 
-    .nav-links a:hover {
-      color: var(--slate-blue);
-    }
+    .nav-links a:hover { color: var(--gold); }
 
     .nav-toggle {
       display: none;
@@ -81,413 +91,761 @@
 
     .nav-toggle span {
       display: block;
-      width: 24px;
+      width: 22px;
       height: 2px;
-      background: var(--slate-blue);
+      background: var(--charcoal);
     }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
-      background: var(--slate-blue);
-      padding: 5rem 2rem;
-      text-align: center;
-    }
-
-    .hero-inner {
-      max-width: 760px;
+      max-width: 1140px;
       margin: 0 auto;
+      padding: 4rem 3rem 3rem;
+      display: grid;
+      grid-template-columns: 65fr 1px 35fr;
+      gap: 0;
+      align-items: start;
     }
 
-    .hero h1 {
-      color: var(--white);
-      font-size: 2.4rem;
+    /* Left column */
+    .hero-main {
+      padding-right: 3rem;
+    }
+
+    .featured-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
       font-weight: 700;
-      line-height: 1.25;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-headline {
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: var(--charcoal);
       margin-bottom: 1.25rem;
     }
 
-    .hero p {
-      color: rgba(255,255,255,0.88);
-      font-size: 1.1rem;
-      font-weight: 300;
-      margin-bottom: 2rem;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
+    .hero-excerpt {
+      font-size: 1rem;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+      max-width: 560px;
     }
 
-    .btn {
-      display: inline-block;
-      background: var(--white);
-      color: var(--slate-blue);
-      padding: 0.75rem 2rem;
-      border-radius: 3px;
-      font-weight: 700;
-      font-size: 0.95rem;
-      text-decoration: none;
+    .hero-byline {
+      font-size: 0.82rem;
+      color: var(--muted);
       letter-spacing: 0.02em;
+    }
+
+    .hero-byline strong {
+      color: var(--charcoal);
+      font-weight: 700;
+    }
+
+    .hero-read-more {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 1px;
       transition: opacity 0.2s;
     }
 
-    .btn:hover { opacity: 0.9; }
+    .hero-read-more:hover { opacity: 0.75; }
 
-    /* SECTIONS */
-    section { padding: 4rem 2rem; }
+    /* Divider */
+    .hero-divider {
+      width: 1px;
+      background: var(--gold);
+      align-self: stretch;
+      min-height: 240px;
+    }
 
-    .section-inner {
-      max-width: 1060px;
+    /* Right column */
+    .hero-sidebar {
+      padding-left: 3rem;
+    }
+
+    .sidebar-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+    }
+
+    .sidebar-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    .sidebar-list li {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .sidebar-bullet {
+      color: var(--gold);
+      font-size: 1rem;
+      line-height: 1.3;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .sidebar-list a {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.92rem;
+      color: var(--charcoal);
+      line-height: 1.4;
+      transition: color 0.2s;
+    }
+
+    .sidebar-list a:hover { color: var(--gold); }
+
+    /* ── HERO BORDER ── */
+    .hero-border {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 3rem;
+    }
+
+    .hero-border hr {
+      border: none;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── STAT STRIP ── */
+    .stat-strip {
+      background: var(--warm-white);
+      padding: 3rem 3rem;
+    }
+
+    .stat-strip-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+
+    .stat-item {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      border-right: 1px solid var(--border);
+    }
+
+    .stat-item:last-child { border-right: none; }
+
+    .stat-number {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.75rem;
+    }
+
+    .stat-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
+      color: var(--charcoal);
+      line-height: 1.5;
+      max-width: 200px;
       margin: 0 auto;
     }
 
-    .section-heading {
-      font-size: 1.75rem;
-      color: var(--dark-slate);
+    /* ── ARTICLE GRID ── */
+    .article-section {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 3.5rem 3rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
       margin-bottom: 2rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--charcoal);
     }
 
-    /* FEATURED POST */
-    .featured { background: var(--white); }
-
-    .featured-card {
-      border-left: 4px solid var(--slate-blue);
-      padding: 2rem 2rem 2rem 2.5rem;
-      background: var(--white);
-      box-shadow: 0 2px 12px rgba(43,69,144,0.07);
-      max-width: 760px;
-    }
-
-    .post-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--slate-blue);
-      margin-bottom: 0.6rem;
-    }
-
-    .featured-card h2 {
-      font-size: 1.5rem;
-      color: var(--dark-slate);
-      margin-bottom: 0.4rem;
-      line-height: 1.3;
-    }
-
-    .post-date {
-      font-size: 0.82rem;
-      color: var(--warm-gray);
-      margin-bottom: 1rem;
-    }
-
-    .featured-card p {
-      color: #444;
-      margin-bottom: 1.25rem;
+    .section-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
       font-size: 1rem;
-    }
-
-    .read-more {
-      color: var(--slate-blue);
       font-weight: 700;
-      text-decoration: none;
-      font-size: 0.9rem;
+      color: var(--charcoal);
       letter-spacing: 0.02em;
     }
 
-    .read-more:hover { text-decoration: underline; }
+    .section-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-    /* BY SECTOR */
-    .by-sector { background: var(--light-silver); }
-
-    .sector-grid {
+    .article-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
     }
 
-    .sector-card {
-      background: var(--white);
-      border-top: 4px solid var(--slate-blue);
-      padding: 1.75rem;
-      box-shadow: 0 2px 8px rgba(43,69,144,0.06);
+    .article-card {
+      padding: 2rem 2.5rem 2rem 0;
+      border-right: 1px solid var(--border);
     }
 
-    .sector-card h3 {
-      font-size: 1.1rem;
-      color: var(--dark-slate);
+    .article-card:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 2.5rem;
+    }
+
+    .article-card:nth-child(2) {
+      padding-left: 2.5rem;
+    }
+
+    .article-card + .article-card {
+      border-top: none;
+    }
+
+    .card-category {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
       margin-bottom: 0.6rem;
     }
 
-    .sector-card p {
-      font-size: 0.92rem;
-      color: #555;
-      line-height: 1.55;
-    }
-
-    /* RECENT POSTS */
-    .recent-posts { background: var(--white); }
-
-    .posts-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.75rem;
-    }
-
-    .post-card {
-      border: 1px solid #e0e3ec;
-      padding: 1.75rem;
-      border-radius: 3px;
-    }
-
-    .post-card h3 {
-      font-size: 1.15rem;
-      color: var(--dark-slate);
-      margin-bottom: 0.5rem;
+    .card-headline {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--charcoal);
       line-height: 1.35;
+      margin-bottom: 0.7rem;
     }
 
-    .post-card p {
-      font-size: 0.9rem;
+    .card-excerpt {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.88rem;
       color: #555;
+      line-height: 1.65;
       margin-bottom: 1rem;
     }
 
-    .post-card a.read-more {
-      display: inline-block;
+    .card-read-more {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--gold);
+      text-transform: uppercase;
+      transition: opacity 0.2s;
     }
 
-    /* FIVE PRINCIPLES */
-    .principles {
-      background: var(--slate-blue);
-      color: var(--white);
+    .card-read-more:hover { opacity: 0.7; }
+
+    /* Row border between grid rows */
+    .article-grid-row {
+      display: contents;
     }
 
-    .principles .section-heading {
+    .grid-row-divider {
+      grid-column: 1 / -1;
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ── PRINCIPLES BAND ── */
+    .principles-band {
+      background: var(--charcoal);
+      padding: 4rem 3rem;
+    }
+
+    .principles-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .principles-header {
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(201, 146, 42, 0.4);
+    }
+
+    .principles-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
       color: var(--white);
     }
 
     .principles-list {
       list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem 4rem;
       counter-reset: principle;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      max-width: 780px;
     }
 
     .principles-list li {
       counter-increment: principle;
       display: flex;
-      gap: 1.25rem;
+      gap: 1rem;
       align-items: flex-start;
     }
 
-    .principles-list li::before {
-      content: counter(principle);
-      min-width: 36px;
-      height: 36px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 50%;
+    .principle-num {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 1.6rem;
+    }
+
+    .principle-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.65;
+    }
+
+    /* ── SECTOR BAND ── */
+    .sector-band {
+      background: var(--warm-white);
+      padding: 3.5rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .sector-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+    }
+
+    .sector-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 2rem;
+    }
+
+    .sector-item {
+      padding: 1.5rem 2rem 1.5rem 0;
+      border-right: 1px solid var(--border);
+    }
+
+    .sector-item:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 2rem;
+    }
+
+    .sector-item:nth-child(2),
+    .sector-item:nth-child(3) {
+      padding-left: 2rem;
+    }
+
+    .sector-name {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .sector-desc {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── SUBSCRIBE ── */
+    .subscribe-band {
+      padding: 3.5rem 3rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .subscribe-inner {
+      max-width: 1140px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: center;
-      font-family: 'Roboto Slab', serif;
+      gap: 4rem;
+    }
+
+    .subscribe-copy {
+      flex: 1;
+    }
+
+    .subscribe-copy h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.25rem;
       font-weight: 700;
-      font-size: 0.95rem;
-      flex-shrink: 0;
+      color: var(--charcoal);
+      margin-bottom: 0.4rem;
     }
 
-    .principles-list li span {
-      padding-top: 0.35rem;
-      font-size: 0.97rem;
-      line-height: 1.6;
-      opacity: 0.92;
-    }
-
-    /* SUBSCRIBE */
-    .subscribe {
-      background: var(--dark-slate);
-      text-align: center;
-    }
-
-    .subscribe h2 {
-      color: var(--white);
-      font-size: 1.5rem;
-      margin-bottom: 1.5rem;
+    .subscribe-copy p {
+      font-size: 0.88rem;
+      color: var(--muted);
     }
 
     .subscribe-form {
       display: flex;
-      gap: 0.75rem;
-      justify-content: center;
-      flex-wrap: wrap;
+      gap: 0;
+      flex-shrink: 0;
     }
 
     .subscribe-form input[type="email"] {
       padding: 0.7rem 1.25rem;
-      border: none;
-      border-radius: 3px;
-      font-size: 0.95rem;
-      width: 280px;
-      font-family: 'Roboto', sans-serif;
+      border: 1px solid var(--border);
+      border-right: none;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      width: 260px;
+      outline: none;
+      background: var(--white);
+    }
+
+    .subscribe-form input[type="email"]:focus {
+      border-color: var(--gold);
     }
 
     .subscribe-form button {
-      background: var(--white);
-      color: var(--dark-slate);
-      border: none;
-      padding: 0.7rem 1.75rem;
-      border-radius: 3px;
+      background: var(--charcoal);
+      color: var(--white);
+      border: 1px solid var(--charcoal);
+      padding: 0.7rem 1.5rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
       font-weight: 700;
-      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
       cursor: pointer;
-      font-family: 'Roboto', sans-serif;
-      transition: opacity 0.2s;
+      transition: background 0.2s;
     }
 
-    .subscribe-form button:hover { opacity: 0.9; }
+    .subscribe-form button:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
-      background: var(--dark-slate);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 2rem;
-      text-align: center;
-      color: rgba(255,255,255,0.65);
-      font-size: 0.85rem;
+      background: var(--charcoal);
+      padding: 3rem;
+      border-top: 3px solid var(--gold);
     }
 
-    footer p { margin-bottom: 0.25rem; }
+    .footer-inner {
+      max-width: 1140px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
+    .footer-wordmark {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+
+    .footer-tagline {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.55);
+    }
+
+    .footer-copy {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.4);
+      text-align: right;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+
       .nav-links {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 64px;
+        top: 60px;
         left: 0;
         right: 0;
         background: var(--white);
-        border-bottom: 2px solid var(--slate-blue);
-        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        padding: 1.25rem 1.5rem;
         gap: 1rem;
       }
 
       .nav-links.open { display: flex; }
-
       .nav-toggle { display: flex; }
 
-      .hero h1 { font-size: 1.7rem; }
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 2.5rem 1.5rem 2rem;
+        gap: 2rem;
+      }
 
-      .sector-grid { grid-template-columns: 1fr; }
+      .hero-main { padding-right: 0; }
+      .hero-divider { display: none; }
+      .hero-sidebar { padding-left: 0; border-top: 1px solid var(--border); padding-top: 1.5rem; }
+      .hero-headline { font-size: 1.65rem; }
 
-      .posts-grid { grid-template-columns: 1fr; }
+      .hero-border { padding: 0 1.5rem; }
+
+      .stat-strip { padding: 2rem 1.5rem; }
+      .stat-strip-inner { grid-template-columns: 1fr; gap: 0; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .stat-item:last-child { border-bottom: none; }
+
+      .article-section { padding: 2.5rem 1.5rem; }
+      .article-grid { grid-template-columns: 1fr; }
+      .article-card { padding: 1.5rem 0 !important; border-right: none !important; border-bottom: 1px solid var(--border); }
+      .article-card:last-child { border-bottom: none; }
+
+      .principles-band { padding: 3rem 1.5rem; }
+      .principles-list { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      .sector-band { padding: 2.5rem 1.5rem; }
+      .sector-grid { grid-template-columns: 1fr 1fr; }
+      .sector-item { border-right: none !important; border-bottom: 1px solid var(--border); padding: 1.25rem 0 !important; }
+      .sector-item:nth-last-child(-n+2) { border-bottom: none; }
+
+      .subscribe-band { padding: 2.5rem 1.5rem; }
+      .subscribe-inner { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .subscribe-form { flex-direction: column; width: 100%; }
+      .subscribe-form input[type="email"] { width: 100%; border-right: 1px solid var(--border); }
+      .subscribe-form input[type="email"]:focus { border-color: var(--gold); }
+
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-copy { text-align: center; }
     }
   </style>
 </head>
 <body>
 
+  <!-- GOLD TOP BAR -->
+  <div class="top-bar"></div>
+
   <!-- NAV -->
   <nav>
-    <a href="/" class="nav-logo">Effective Boards</a>
-    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+    <a href="/" class="wordmark">Effective Boards</a>
+    <button class="nav-toggle" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
       <span></span><span></span><span></span>
     </button>
     <ul class="nav-links">
-      <li><a href="#recent-posts">Insights</a></li>
-      <li><a href="#by-sector">By Sector</a></li>
+      <li><a href="#governance">Governance</a></li>
+      <li><a href="#leadership">Leadership</a></li>
+      <li><a href="#strategy">Strategy</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#subscribe">Subscribe</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <h1>Every organization has a board. Most boards are making the same mistakes.</h1>
-      <p>Effective Boards applies evidence-based governance principles to organizations of every type — from school districts to nonprofits to hospital systems. The fundamentals of good governance don't change.</p>
-      <a href="posts/one-question-every-meeting.html" class="btn">Read the Latest →</a>
+  <section class="hero" aria-label="Featured article">
+    <!-- LEFT: Featured -->
+    <div class="hero-main">
+      <div class="featured-label">Featured</div>
+      <h1 class="hero-headline">The One Question Every Board Should Ask at Every Meeting</h1>
+      <p class="hero-excerpt">Before the meeting ends: "Did we govern today, or did we manage?" If the honest answer is "we managed," the meeting was a missed opportunity — not a failure, but a pattern worth breaking. Governance and management are different activities, and most boards conflate them at the cost of the outcomes they exist to produce.</p>
+      <div class="hero-byline"><strong>Airick Journey Crabill</strong> &nbsp;·&nbsp; June 2026</div>
+      <a href="posts/one-question-every-meeting.html" class="hero-read-more">Read the Article →</a>
     </div>
-  </section>
 
-  <!-- FEATURED POST -->
-  <section class="featured">
-    <div class="section-inner">
-      <div class="featured-card">
-        <div class="post-label">The Fundamentals</div>
-        <h2>The One Question Every Board Should Ask at Every Meeting</h2>
-        <div class="post-date">June 16, 2026</div>
-        <p>Before the meeting ends: "Did we govern today, or did we manage?" If the honest answer is "we managed," the meeting was a missed opportunity. Not a failure — boards fix this — but a pattern worth breaking.</p>
-        <a href="posts/one-question-every-meeting.html" class="read-more">Read more →</a>
-      </div>
-    </div>
-  </section>
+    <!-- GOLD DIVIDER -->
+    <div class="hero-divider" aria-hidden="true"></div>
 
-  <!-- BY SECTOR -->
-  <section class="by-sector" id="by-sector">
-    <div class="section-inner">
-      <h2 class="section-heading">Governance Applies to Every Board</h2>
-      <div class="sector-grid">
-        <div class="sector-card">
-          <h3>School Boards</h3>
-          <p>Responsible for student learning outcomes across the entire community they serve</p>
-        </div>
-        <div class="sector-card">
-          <h3>Nonprofit Boards</h3>
-          <p>Stewards of mission and resources for beneficiaries who have no market recourse</p>
-        </div>
-        <div class="sector-card">
-          <h3>Hospital &amp; Health System Boards</h3>
-          <p>Accountable for patient outcomes and community health, not institutional self-preservation</p>
-        </div>
-        <div class="sector-card">
-          <h3>Housing Authority Boards</h3>
-          <p>Responsible for safe, stable housing outcomes for residents, not for bureaucratic continuity</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- RECENT POSTS -->
-  <section class="recent-posts" id="recent-posts">
-    <div class="section-inner">
-      <h2 class="section-heading">Recent Insights</h2>
-      <div class="posts-grid">
-        <div class="post-card">
-          <div class="post-label">Nonprofit</div>
-          <h3>The Nonprofit Board That Governs Well Is a Competitive Advantage</h3>
-          <div class="post-date">June 9, 2026</div>
-          <p>Most nonprofit boards are caught between donor relations, executive director management, and committee work. Almost none spend significant time monitoring whether they're achieving their mission. Here's why that's backwards.</p>
-          <a href="posts/nonprofit-governance-advantage.html" class="read-more">Read more →</a>
-        </div>
-        <div class="post-card">
-          <div class="post-label">Fundamentals</div>
-          <h3>Why "Strategic Plan" Isn't the Same as "Governing Well"</h3>
-          <div class="post-date">June 2, 2026</div>
-          <p>Boards that confuse having a strategic plan with doing governance have a plan. They don't have accountability. The plan and the governance system are different things — and confusing them is why most strategic plans fail.</p>
-          <a href="#" class="read-more">Read more →</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FIVE PRINCIPLES -->
-  <section class="principles" id="about">
-    <div class="section-inner">
-      <h2 class="section-heading">Five Governance Fundamentals — Regardless of Sector</h2>
-      <ul class="principles-list">
-        <li><span>The board's job is outcomes — not operations, not activities, not plans. Outcomes.</span></li>
-        <li><span>What the board monitors is what the organization prioritizes. If student learning (or mission achievement, or patient outcomes) isn't monitored, it isn't the priority — no matter what the strategic plan says.</span></li>
-        <li><span>The board and the CEO/Executive Director need a clear boundary. Blurring it makes both parties less effective.</span></li>
-        <li><span>Every governance process should be traceable back to an outcome it serves. If it isn't, it shouldn't be in the process.</span></li>
-        <li><span>Accountability isn't punishment. It's measurement. A board that can't measure outcomes can't govern.</span></li>
+    <!-- RIGHT: Also in this issue -->
+    <div class="hero-sidebar">
+      <div class="sidebar-label">Also in this issue</div>
+      <ul class="sidebar-list">
+        <li>
+          <span class="sidebar-bullet">—</span>
+          <a href="posts/nonprofit-governance-advantage.html">The Nonprofit Board That Governs Well Is a Competitive Advantage</a>
+        </li>
+        <li>
+          <span class="sidebar-bullet">—</span>
+          <a href="#">Why "Strategic Plan" Isn't the Same as "Governing Well"</a>
+        </li>
+        <li>
+          <span class="sidebar-bullet">—</span>
+          <a href="#">What the Board Monitors Is What the Organization Prioritizes</a>
+        </li>
       </ul>
     </div>
   </section>
 
+  <div class="hero-border"><hr></div>
+
+  <!-- STAT STRIP -->
+  <section class="stat-strip" aria-label="Key governance findings">
+    <div class="stat-strip-inner">
+      <div class="stat-item">
+        <div class="stat-number">5</div>
+        <div class="stat-label">governance practices that change outcomes — regardless of sector</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">board types that consistently underperform — and what they share</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">1</div>
+        <div class="stat-label">question every board should ask at the close of every meeting</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARTICLE GRID -->
+  <article class="article-section" id="governance">
+    <div class="section-header">
+      <h2 class="section-title">Recent Insights</h2>
+      <div class="section-rule" aria-hidden="true"></div>
+    </div>
+
+    <div class="article-grid">
+      <!-- Row 1 -->
+      <div class="article-card">
+        <div class="card-category">Fundamentals</div>
+        <h3 class="card-headline">The One Question Every Board Should Ask at Every Meeting</h3>
+        <p class="card-excerpt">Governance and management are different activities. Most boards conflate them — at the cost of the outcomes they exist to produce.</p>
+        <a href="posts/one-question-every-meeting.html" class="card-read-more">Read more →</a>
+      </div>
+      <div class="article-card">
+        <div class="card-category">Nonprofit</div>
+        <h3 class="card-headline">The Nonprofit Board That Governs Well Is a Competitive Advantage</h3>
+        <p class="card-excerpt">Most nonprofit boards never spend significant time monitoring whether they're achieving their mission. Here's why that's backwards — and how to fix it.</p>
+        <a href="posts/nonprofit-governance-advantage.html" class="card-read-more">Read more →</a>
+      </div>
+      <div class="article-card">
+        <div class="card-category">Strategy</div>
+        <h3 class="card-headline">Why "Strategic Plan" Isn't the Same as "Governing Well"</h3>
+        <p class="card-excerpt">Boards that confuse having a strategic plan with doing governance have a plan. They don't have accountability. The distinction matters enormously.</p>
+        <a href="#" class="card-read-more">Read more →</a>
+      </div>
+
+      <!-- Divider -->
+      <div class="grid-row-divider"></div>
+
+      <!-- Row 2 -->
+      <div class="article-card" style="padding-top:2rem;">
+        <div class="card-category">Leadership</div>
+        <h3 class="card-headline">The Board–CEO Boundary: Why Blurring It Weakens Both</h3>
+        <p class="card-excerpt">Every governance system requires a clear line between the board's work and the executive's work. When that line blurs, both parties become less effective.</p>
+        <a href="#" class="card-read-more">Read more →</a>
+      </div>
+      <div class="article-card" style="padding-top:2rem;">
+        <div class="card-category">Accountability</div>
+        <h3 class="card-headline">Accountability Isn't Punishment — It's Measurement</h3>
+        <p class="card-excerpt">A board that cannot measure outcomes cannot govern. Accountability is the mechanism by which boards fulfill their fundamental responsibility.</p>
+        <a href="#" class="card-read-more">Read more →</a>
+      </div>
+      <div class="article-card" style="padding-top:2rem;">
+        <div class="card-category">Governance</div>
+        <h3 class="card-headline">Every Governance Process Should Be Traceable to an Outcome</h3>
+        <p class="card-excerpt">If a governance process cannot be traced back to an outcome it serves, it shouldn't be in the process. Most boards have never asked the question.</p>
+        <a href="#" class="card-read-more">Read more →</a>
+      </div>
+    </div>
+  </article>
+
+  <!-- PRINCIPLES BAND -->
+  <section class="principles-band" id="about">
+    <div class="principles-inner">
+      <div class="principles-header">
+        <h2 class="principles-title">Five Governance Fundamentals — Regardless of Sector</h2>
+      </div>
+      <ul class="principles-list">
+        <li>
+          <span class="principle-num">1</span>
+          <span class="principle-text">The board's job is outcomes — not operations, not activities, not plans. Outcomes. Everything else is in service of that, or it isn't governance.</span>
+        </li>
+        <li>
+          <span class="principle-num">2</span>
+          <span class="principle-text">What the board monitors is what the organization prioritizes. If mission achievement isn't being monitored, it isn't the priority — regardless of what the strategic plan says.</span>
+        </li>
+        <li>
+          <span class="principle-num">3</span>
+          <span class="principle-text">The board and the chief executive need a clear boundary. Blurring it makes both parties less effective and obscures accountability for outcomes.</span>
+        </li>
+        <li>
+          <span class="principle-num">4</span>
+          <span class="principle-text">Every governance process should be traceable back to an outcome it serves. If it isn't, it has no place in the governance system.</span>
+        </li>
+        <li>
+          <span class="principle-num">5</span>
+          <span class="principle-text">Accountability isn't punishment — it's measurement. A board that cannot measure outcomes cannot govern. Full stop.</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SECTOR BAND -->
+  <section class="sector-band" id="leadership">
+    <div class="sector-inner">
+      <div class="section-header">
+        <h2 class="section-title">Governance Applies to Every Board</h2>
+        <div class="section-rule" aria-hidden="true"></div>
+      </div>
+      <div class="sector-grid">
+        <div class="sector-item">
+          <div class="sector-name">School Boards</div>
+          <p class="sector-desc">Responsible for student learning outcomes across the communities they serve — not for managing schools.</p>
+        </div>
+        <div class="sector-item">
+          <div class="sector-name">Nonprofit Boards</div>
+          <p class="sector-desc">Stewards of mission and resources for beneficiaries who have no market recourse if the board fails.</p>
+        </div>
+        <div class="sector-item">
+          <div class="sector-name">Hospital &amp; Health System Boards</div>
+          <p class="sector-desc">Accountable for patient outcomes and community health — not for institutional self-preservation.</p>
+        </div>
+        <div class="sector-item">
+          <div class="sector-name">Housing Authority Boards</div>
+          <p class="sector-desc">Responsible for safe, stable housing outcomes for residents — not for bureaucratic continuity.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- SUBSCRIBE -->
-  <section class="subscribe" id="subscribe">
-    <div class="section-inner">
-      <h2>Governance insights for serious board members — weekly.</h2>
+  <section class="subscribe-band" id="strategy">
+    <div class="subscribe-inner">
+      <div class="subscribe-copy">
+        <h2>Governance insights for serious board members.</h2>
+        <p>New articles and analysis, delivered when they're ready — not on a schedule.</p>
+      </div>
       <form class="subscribe-form" onsubmit="return false;">
         <input type="email" placeholder="Your email address" aria-label="Email address">
         <button type="submit">Subscribe</button>
@@ -497,8 +855,16 @@
 
   <!-- FOOTER -->
   <footer>
-    <p>Effective Boards — governance principles that apply to any board</p>
-    <p>© 2026 Effective Boards</p>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-wordmark">Effective Boards</div>
+        <div class="footer-tagline">Governance principles for boards that lead.</div>
+      </div>
+      <div class="footer-copy">
+        <p>© 2026 Effective Boards</p>
+        <p>Airick Journey Crabill</p>
+      </div>
+    </div>
   </footer>
 
 </body>
