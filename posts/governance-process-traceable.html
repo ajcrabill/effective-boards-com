@@ -1,83 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Every Governance Process Should Be Traceable to an Outcome — Effective Boards</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    :root {
-      --slate-blue: #2B4590;
-      --warm-gray: #8D99AE;
-      --white: #FFFFFF;
-      --dark-slate: #1A2A5E;
-      --light-silver: #EEF0F5;
-    }
-    body { font-family: 'Roboto', sans-serif; color: #2c2c2c; line-height: 1.6; }
-    h1, h2, h3 { font-family: 'Roboto Slab', serif; }
-    nav {
-      position: sticky; top: 0; z-index: 100; background: var(--white);
-      border-bottom: 3px solid var(--slate-blue); padding: 0 2rem;
-      display: flex; align-items: center; justify-content: space-between; height: 64px;
-    }
-    .nav-logo { font-family: 'Roboto Slab', serif; font-size: 1.25rem; font-weight: 700; color: var(--slate-blue); text-decoration: none; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; }
-    .nav-links a { text-decoration: none; color: #444; font-weight: 500; font-size: 0.9rem; letter-spacing: 0.03em; transition: color 0.2s; }
-    .nav-links a:hover { color: var(--slate-blue); }
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
-    .nav-toggle span { display: block; width: 24px; height: 2px; background: var(--slate-blue); }
-    .article-wrap { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 5rem; }
-    .breadcrumb { font-size: 0.85rem; margin-bottom: 2rem; }
-    .breadcrumb a { color: var(--slate-blue); text-decoration: none; font-weight: 500; }
-    .breadcrumb a:hover { text-decoration: underline; }
-    .post-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--slate-blue); margin-bottom: 0.75rem; }
-    .article-wrap h1 { font-size: 2rem; color: var(--dark-slate); line-height: 1.25; margin-bottom: 0.5rem; }
-    .post-date { font-size: 0.85rem; color: var(--warm-gray); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid #e0e3ec; }
-    .article-body p { margin-bottom: 1.4rem; font-size: 1.05rem; color: #333; line-height: 1.75; }
-    .article-body h2 { font-size: 1.3rem; color: var(--dark-slate); margin: 2.5rem 0 1rem; }
-    .article-body blockquote { border-left: 4px solid var(--slate-blue); margin: 2rem 0; padding: 1rem 1.5rem; background: var(--light-silver); font-size: 1.1rem; color: var(--dark-slate); font-family: 'Roboto Slab', serif; font-style: italic; }
-    .subscribe-strip { background: var(--dark-slate); padding: 2.5rem 2rem; text-align: center; }
-    .subscribe-strip h2 { color: var(--white); font-size: 1.25rem; margin-bottom: 1.25rem; }
-    .subscribe-form { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-    .subscribe-form input[type="email"] { padding: 0.65rem 1.25rem; border: none; border-radius: 3px; font-size: 0.95rem; width: 260px; font-family: 'Roboto', sans-serif; }
-    .subscribe-form button { background: var(--white); color: var(--dark-slate); border: none; padding: 0.65rem 1.5rem; border-radius: 3px; font-weight: 700; font-size: 0.95rem; cursor: pointer; font-family: 'Roboto', sans-serif; }
-    .subscribe-success { display: none; color: var(--gold-light, #E8C870); font-weight: 600; padding: 0.5rem 0; font-size: 0.95rem; }
-    footer { background: var(--dark-slate); border-top: 1px solid rgba(255,255,255,0.1); padding: 2rem; text-align: center; color: rgba(255,255,255,0.65); font-size: 0.85rem; }
-    footer p { margin-bottom: 0.25rem; }
-    @media (max-width: 768px) {
-      .nav-links { display: none; flex-direction: column; position: absolute; top: 64px; left: 0; right: 0; background: var(--white); border-bottom: 2px solid var(--slate-blue); padding: 1rem 2rem; gap: 1rem; }
-      .nav-links.open { display: flex; }
-      .nav-toggle { display: flex; }
-      .article-wrap h1 { font-size: 1.6rem; }
-    }
-  </style>
-</head>
-<body>
+---
+layout: post
+title: "Every Governance Process Should Be Traceable to an Outcome"
+label: "Governance"
+date: "May 12, 2026"
+---
 
-<nav>
-  <a href="/" class="nav-logo">Effective Boards</a>
-  <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
-    <span></span><span></span><span></span>
-  </button>
-  <ul class="nav-links">
-    <li><a href="/governance.html">Governance</a></li>
-    <li><a href="/leadership.html">Leadership</a></li>
-    <li><a href="/strategy.html">Strategy</a></li>
-    <li><a href="/#about">About</a></li>
-    <li><a href="/#subscribe">Subscribe</a></li>
-  </ul>
-</nav>
-
-<div class="article-wrap">
-  <div class="breadcrumb">
-    <a href="/">Home</a> &rsaquo; <a href="/governance.html">Governance</a>
-  </div>
-  <div class="post-label">Governance</div>
-  <h1>Every Governance Process Should Be Traceable to an Outcome</h1>
-  <div class="post-date">May 12, 2026</div>
+<div class="post-date">May 12, 2026</div>
 
   <div class="article-body">
     <p>Governance systems do not start bloated. They accumulate. A committee is formed to address a specific concern; the concern resolves, but the committee continues meeting. An approval requirement is added after a near-miss; the context changes, but the approval requirement remains. A reporting format is inherited from a predecessor board; no one remembers why it was designed that way, but changing it feels like a larger project than anyone wants to take on. Over years and decades, the average board's governance structure becomes a sedimentary record of past anxieties — processes layered on processes, most of which were never evaluated against the outcomes they were meant to serve.</p>
@@ -110,29 +38,3 @@
 
     <p>This is not a counsel of minimalism for its own sake. Some governance systems are genuinely under-structured — too few monitoring processes, too little accountability infrastructure, too little written clarity about outcome goals. The goal is not fewer processes; it is better-justified ones. A governance structure where every process can be traced to an outcome it serves is not a lean governance structure — it is a functioning one.</p>
   </div>
-</div>
-
-<div class="subscribe-strip" id="subscribe">
-  <h2>Governance insights for serious board members.</h2>
-  <form class="subscribe-form" id="sub-form" action="https://formspree.io/f/xayzdydv" method="POST">
-    <input type="hidden" name="form" value="effectiveboards-subscribe">
-    <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
-    <button type="submit">Subscribe</button>
-  </form>
-  <div class="subscribe-success" id="sub-success">&#x2713; You're subscribed.</div>
-</div>
-<script>
-  document.getElementById('sub-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    const r = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
-    if (r.ok) { e.target.style.display='none'; document.getElementById('sub-success').style.display='block'; }
-  });
-</script>
-
-<footer>
-  <p>Effective Boards — governance principles that apply to any board</p>
-  <p>&copy; 2026 Effective Boards</p>
-</footer>
-
-</body>
-</html>

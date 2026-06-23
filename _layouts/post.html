@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — Effective Boards</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --charcoal: #1C2B3A;
+      --gold:     #C9922A;
+      --white:    #FFFFFF;
+      --warm-white: #F7F5F2;
+      --border:   #E8E4DC;
+      --text:     #2C2C2C;
+      --muted:    #7A7570;
+    }
+    body { font-family: 'Lato', sans-serif; color: var(--text); line-height: 1.65; background: var(--white); }
+    h1, h2, h3, h4 { font-family: 'Libre Baskerville', Georgia, serif; }
+    a { text-decoration: none; color: inherit; }
+    .top-bar { height: 4px; background: var(--gold); }
+
+    /* NAV */
+    nav {
+      background: var(--white); border-bottom: 1px solid var(--border);
+      padding: 0 3rem; display: flex; align-items: center;
+      justify-content: space-between; height: 60px; position: sticky; top: 0; z-index: 100;
+    }
+    .wordmark { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.15rem; font-weight: 700; color: var(--charcoal); letter-spacing: 0.01em; }
+    .nav-links { display: flex; gap: 0; list-style: none; align-items: center; }
+    .nav-section-label {
+      font-family: 'Lato', sans-serif; font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold);
+      padding-right: 0.75rem; padding-left: 0.5rem; white-space: nowrap;
+      border-right: 1px solid var(--border); margin-right: 0.75rem;
+    }
+    .nav-links a {
+      font-family: 'Lato', sans-serif; font-size: 0.82rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; color: var(--charcoal);
+      transition: color 0.2s; padding: 0 0.85rem;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-sep { width: 1px; height: 18px; background: var(--border); margin: 0 0.5rem; }
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--charcoal); }
+
+    /* ARTICLE */
+    .article-outer { max-width: 720px; margin: 0 auto; padding: 3rem 2rem 5rem; }
+    .breadcrumb { font-family: 'Lato', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; }
+    .breadcrumb a { color: var(--gold); }
+    .breadcrumb a:hover { opacity: 0.75; }
+    .post-label { font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    h1 { font-size: 2rem; color: var(--charcoal); line-height: 1.25; margin-bottom: 0.5rem; }
+    .post-date { font-family: 'Lato', sans-serif; font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .article-body p { margin-bottom: 1.4rem; font-size: 1.05rem; color: #333; line-height: 1.75; }
+    .article-body h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.3rem; color: var(--charcoal); margin: 2.5rem 0 1rem; }
+    .article-body blockquote {
+      border-left: 3px solid var(--gold); margin: 2rem 0; padding: 1rem 1.5rem;
+      background: var(--warm-white); font-size: 1.05rem; color: var(--charcoal);
+      font-family: 'Libre Baskerville', Georgia, serif; font-style: italic;
+    }
+    .article-body ul, .article-body ol { margin: 0 0 1.4rem 1.75rem; }
+    .article-body li { font-size: 1.05rem; color: #333; line-height: 1.75; margin-bottom: 0.5rem; }
+    .article-body .board-type { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .article-body .board-type:last-child { border-bottom: none; }
+    .article-body .board-type-number { font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .article-body .board-type h2 { margin-top: 0; }
+    .article-body .practice { margin-bottom: 2.5rem; padding-bottom: 2rem; border-bottom: 1px solid var(--border); }
+    .article-body .practice:last-child { border-bottom: none; }
+    .article-body .practice-number { font-family: 'Lato', sans-serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+
+    /* SUBSCRIBE */
+    .subscribe-band { padding: 3.5rem 3rem; border-top: 1px solid var(--border); background: var(--warm-white); }
+    .subscribe-inner { max-width: 720px; margin: 0 auto; display: flex; align-items: center; gap: 4rem; }
+    .subscribe-copy { flex: 1; }
+    .subscribe-copy h2 { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.15rem; font-weight: 700; color: var(--charcoal); margin-bottom: 0.4rem; }
+    .subscribe-copy p { font-family: 'Lato', sans-serif; font-size: 0.88rem; color: var(--muted); }
+    .subscribe-form { display: flex; gap: 0; flex-shrink: 0; }
+    .subscribe-form input[type="email"] { padding: 0.7rem 1.25rem; border: 1px solid var(--border); border-right: none; font-family: 'Lato', sans-serif; font-size: 0.9rem; color: var(--text); width: 220px; outline: none; background: var(--white); transition: border-color 0.2s; }
+    .subscribe-form input[type="email"]:focus { border-color: var(--gold); }
+    .subscribe-form button { background: var(--charcoal); color: var(--white); border: 1px solid var(--charcoal); padding: 0.7rem 1.25rem; font-family: 'Lato', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
+    .subscribe-form button:hover { background: var(--gold); border-color: var(--gold); }
+    .subscribe-success { display: none; font-family: 'Lato', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--gold); padding: 0.5rem 0; }
+
+    /* FOOTER */
+    footer { background: var(--charcoal); padding: 3rem; border-top: 3px solid var(--gold); }
+    .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+    .footer-wordmark { font-family: 'Libre Baskerville', Georgia, serif; font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 0.3rem; }
+    .footer-tagline { font-family: 'Lato', sans-serif; font-size: 0.82rem; color: rgba(255,255,255,0.55); }
+    .footer-copy { font-family: 'Lato', sans-serif; font-size: 0.78rem; color: rgba(255,255,255,0.4); text-align: right; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      nav { padding: 0 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid var(--border); padding: 1.25rem 1.5rem; gap: 1rem; }
+      .nav-links.open { display: flex; }
+      .nav-section-label { border-right: none; padding: 0; margin: 0; }
+      .nav-sep { width: 100%; height: 1px; margin: 0.25rem 0; }
+      .nav-links a { padding: 0; }
+      .nav-toggle { display: flex; }
+      .article-outer { padding: 2.5rem 1.5rem 4rem; }
+      h1 { font-size: 1.65rem; }
+      .subscribe-band { padding: 2.5rem 1.5rem; }
+      .subscribe-inner { flex-direction: column; gap: 1.5rem; align-items: flex-start; }
+      .subscribe-form { flex-direction: column; width: 100%; }
+      .subscribe-form input[type="email"] { width: 100%; border-right: 1px solid var(--border); }
+      footer { padding: 2rem 1.5rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+      .footer-copy { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar"></div>
+
+  <nav>
+    <a href="/" class="wordmark">Effective Boards</a>
+    <button class="nav-toggle" onclick="this.closest('nav').querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links">
+      <li class="nav-section-label">Topics</li>
+      <li><a href="/governance.html">Governance</a></li>
+      <li><a href="/leadership.html">Leadership</a></li>
+      <li><a href="/strategy.html">Strategy</a></li>
+      <li class="nav-sep" aria-hidden="true"></li>
+      <li><a href="/#about">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="article-outer">
+    <div class="breadcrumb"><a href="/">&#x2190; Effective Boards</a></div>
+    {% if page.label %}<div class="post-label">{{ page.label }}</div>{% endif %}
+    <h1>{{ page.title }}</h1>
+    {% if page.date %}<div class="post-date">{{ page.date }}</div>{% endif %}
+    <div class="article-body">
+      {{ content }}
+    </div>
+  </div>
+
+  <div class="subscribe-band" id="subscribe">
+    <div class="subscribe-inner">
+      <div class="subscribe-copy">
+        <h2>Governance insights for serious board members.</h2>
+        <p>New articles weekly &mdash; practical, direct, no filler.</p>
+      </div>
+      <form class="subscribe-form" id="sub-form" action="https://formspree.io/f/xayzdydv" method="POST">
+        <input type="hidden" name="form" value="effectiveboards-subscribe">
+        <input type="email" name="email" placeholder="Your email address" aria-label="Email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="subscribe-success" id="sub-success">&#x2713; You&#x2019;re subscribed.</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-wordmark">Effective Boards</div>
+        <div class="footer-tagline">Governance principles for boards that lead.</div>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; 2026 Effective Boards</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('sub-form').addEventListener('submit', async e => {
+      e.preventDefault();
+      const r = await fetch(e.target.action, { method: 'POST', body: new FormData(e.target), headers: { 'Accept': 'application/json' } });
+      if (r.ok) { e.target.style.display = 'none'; document.getElementById('sub-success').style.display = 'block'; }
+    });
+  </script>
+</body>
+</html>
