@@ -1,3 +1,5 @@
+---
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,30 +214,27 @@
   </nav>
 
   <!-- HERO -->
+  {% assign posts = site.pages | where: "layout", "post" | sort: "date_iso" | reverse %}
+  {% assign featured = posts | first %}
   <section class="hero" aria-label="Featured article">
     <div class="hero-main">
       <div class="featured-label">Featured</div>
-      <h1 class="hero-headline">The One Question Every Board Should Ask at Every Meeting</h1>
-      <p class="hero-excerpt">Before the meeting ends: "Did we govern today, or did we manage?" If the honest answer is "we managed," the meeting was a missed opportunity. Governance and management are different activities, and most boards conflate them at the cost of the outcomes they exist to produce.</p>
-      <div class="hero-byline">June 2026 &nbsp;·&nbsp; Fundamentals</div>
-      <a href="posts/one-question-every-meeting.html" class="hero-read-more">Read the Article &rarr;</a>
+      <h1 class="hero-headline">{{ featured.title }}</h1>
+      <p class="hero-excerpt">{{ featured.content | strip_html | truncatewords: 45 }}</p>
+      <div class="hero-byline">{{ featured.date }} &nbsp;·&nbsp; {{ featured.label }}</div>
+      <a href="{{ featured.url }}" class="hero-read-more">Read the Article &rarr;</a>
     </div>
     <div class="hero-divider" aria-hidden="true"></div>
     <div class="hero-sidebar">
       <div class="sidebar-label">Also this week</div>
       <ul class="sidebar-list">
+        {% assign sidebar_posts = posts | shift | limit: 3 %}
+        {% for post in sidebar_posts %}
         <li>
           <span class="sidebar-bullet">&mdash;</span>
-          <a href="posts/nonprofit-governance-advantage.html">The Nonprofit Board That Governs Well Is a Competitive Advantage</a>
+          <a href="{{ post.url }}">{{ post.title }}</a>
         </li>
-        <li>
-          <span class="sidebar-bullet">&mdash;</span>
-          <a href="posts/strategic-plan-vs-governing.html">Why "Strategic Plan" Isn't the Same as "Governing Well"</a>
-        </li>
-        <li>
-          <span class="sidebar-bullet">&mdash;</span>
-          <a href="posts/board-ceo-boundary.html">The Board&ndash;CEO Boundary: Why Blurring It Weakens Both</a>
-        </li>
+        {% endfor %}
       </ul>
     </div>
   </section>
@@ -271,45 +270,23 @@
     </div>
 
     <div class="article-grid">
-      <div class="article-card">
-        <div class="card-category">Fundamentals</div>
-        <h3 class="card-headline"><a href="posts/one-question-every-meeting.html">The One Question Every Board Should Ask at Every Meeting</a></h3>
-        <p class="card-excerpt">Governance and management are different activities. Most boards conflate them — at the cost of the outcomes they exist to produce.</p>
-        <a href="posts/one-question-every-meeting.html" class="card-read-more">Read more &rarr;</a>
-      </div>
-      <div class="article-card">
-        <div class="card-category">Nonprofit</div>
-        <h3 class="card-headline"><a href="posts/nonprofit-governance-advantage.html">The Nonprofit Board That Governs Well Is a Competitive Advantage</a></h3>
-        <p class="card-excerpt">Most nonprofit boards never spend significant time monitoring whether they're achieving their mission. Here's why that's backwards — and how to fix it.</p>
-        <a href="posts/nonprofit-governance-advantage.html" class="card-read-more">Read more &rarr;</a>
-      </div>
-      <div class="article-card">
-        <div class="card-category">Strategy</div>
-        <h3 class="card-headline"><a href="posts/strategic-plan-vs-governing.html">Why "Strategic Plan" Isn't the Same as "Governing Well"</a></h3>
-        <p class="card-excerpt">Boards that confuse having a strategic plan with doing governance have a plan. They don't have accountability. The distinction matters enormously.</p>
-        <a href="posts/strategic-plan-vs-governing.html" class="card-read-more">Read more &rarr;</a>
-      </div>
-
+      {% assign grid_posts = posts | limit: 6 %}
+      {% for post in grid_posts %}
+        {% assign forloop_index0 = forloop.index0 %}
+        {% if forloop_index0 == 3 %}
       <div class="grid-row-divider"></div>
-
+        {% endif %}
+        {% if forloop_index0 >= 3 %}
       <div class="article-card" style="padding-top:2rem;">
-        <div class="card-category">Leadership</div>
-        <h3 class="card-headline"><a href="posts/board-ceo-boundary.html">The Board&ndash;CEO Boundary: Why Blurring It Weakens Both</a></h3>
-        <p class="card-excerpt">Every governance system requires a clear line between the board's work and the executive's work. When that line blurs, both parties become less effective.</p>
-        <a href="posts/board-ceo-boundary.html" class="card-read-more">Read more &rarr;</a>
+        {% else %}
+      <div class="article-card">
+        {% endif %}
+        <div class="card-category">{{ post.label }}</div>
+        <h3 class="card-headline"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        <p class="card-excerpt">{{ post.content | strip_html | truncatewords: 28 }}</p>
+        <a href="{{ post.url }}" class="card-read-more">Read more &rarr;</a>
       </div>
-      <div class="article-card" style="padding-top:2rem;">
-        <div class="card-category">Governance</div>
-        <h3 class="card-headline"><a href="posts/accountability-measurement.html">Accountability Isn't Punishment — It's Measurement</a></h3>
-        <p class="card-excerpt">A board that cannot measure outcomes cannot govern. Accountability is the mechanism by which boards fulfill their fundamental responsibility.</p>
-        <a href="posts/accountability-measurement.html" class="card-read-more">Read more &rarr;</a>
-      </div>
-      <div class="article-card" style="padding-top:2rem;">
-        <div class="card-category">Governance</div>
-        <h3 class="card-headline"><a href="posts/governance-process-traceable.html">Every Governance Process Should Be Traceable to an Outcome</a></h3>
-        <p class="card-excerpt">If a governance process cannot be traced back to an outcome it serves, it shouldn't be in the process. Most boards have never asked the question.</p>
-        <a href="posts/governance-process-traceable.html" class="card-read-more">Read more &rarr;</a>
-      </div>
+      {% endfor %}
     </div>
   </article>
 
